@@ -1,7 +1,10 @@
 import React from "react";
 import Pizza from "./Pizza";
 
-function PizzaList() {
+function PizzaList({ pizzas, formData, setFormData }) {
+
+  
+
   return (
     <table className="table table-striped">
       <thead>
@@ -13,9 +16,17 @@ function PizzaList() {
         </tr>
       </thead>
       <tbody>
-        {
-          //render Pizza here
-        }
+        {pizzas.map(pizza => {
+           return <Pizza key={pizza.id} 
+                         topping={pizza.topping} 
+                         size={pizza.size} 
+                         vegetarian={pizza.vegetarian} 
+                         pizza={pizza}
+                         pizzas={pizzas}
+                         formData={formData}
+                         setFormData={setFormData}
+                         />
+        })}
       </tbody>
     </table>
   );
